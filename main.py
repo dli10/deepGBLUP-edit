@@ -11,20 +11,20 @@ from dataset_edit import load_dataset
 
 ################ CONFIG ####################
 # data path
-raw_path = 'data/1000_samples.raw' # path of raw file
-phen_path = 'data/1000_samples.phen' # path of phenotype file
-bim_path = 'data/1000_samples.bim' # optional: path of bim file to save SNP effects. If you don't have bim file just type None 
+raw_path = 'data_sim/output_geno_test.raw' # path of raw file
+phen_path = 'data_sim/output_pheno_test.phen' # path of phenotype file
+bim_path = None # optional: path of bim file to save SNP effects. If you don't have bim file just type None 
 
 # train cofig
-lr =  1e-3 # list of cadidate learning rate
-epoch = 10 # max value of cadiate epoch
+lr =  1e-5 # list of candidate learning rate
+epoch = 4 # max value of candidate epoch
 batch_size = 16 # train batch size
 
-device = 'cuda' # type 'cpu' if you use cpu device, or type 'cuda' if you use gpu device.
-h2 = 0.37
+device = 'cpu' # type 'cpu' if you use cpu device, or type 'cuda' if you use gpu device.
+h2 = 0.1
 
 # save config
-save_path = 'outputs' # path to save results
+save_path = 'my_outputs_test' # path to save results
 
 ##############################################
 
@@ -70,4 +70,5 @@ with open(os.path.join(save_path,'setting.txt'),'w') as save:
     save.write(f'H2: {h2}\n')
     save.write('train time\t'+str(train_time)+'\n')
     save.write('test time\t'+str(test_time)+'\n')
+    save.write('running time\t'+str(time.time() - s_time)+'\n') # add total runtime
     
